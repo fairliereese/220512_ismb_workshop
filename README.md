@@ -20,16 +20,28 @@ df['hr'] = df.hr+'_'+df.biorep.astype(str)
 
 for ind, entry in df.iterrows():
     old = entry['File accession']+'.bam'
-    old = entry.hr
+    # old = entry.hr
     new = entry.hr+'.bam'
     os.rename(old, new)
 ```
 
+Cat all the zmw ids together
+```bash
+f=read_names.txt
+echo "" >  $f
+for zmw in *zmws
+do
+  cat $zmw >> $f
+done
+```
+
 Subset based on the reads that we're using
 ```bash
-module load samtools
 for bam in *bam
 do
-
+  new_bam=${bam%.bam}_subset.bam
+  # echo $bam
+  # echo $new_bam
+  samtools view -h -N $f $bam > $new_bam
 done
 ```
