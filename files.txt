@@ -1,0 +1,7 @@
+"https://www.encodeproject.org/metadata/?files.output_type=alignments&type=Experiment&cart=%2Fcarts%2F2a400711-709e-4167-a65a-4d1da2e4a4fc%2F&files.processed=true"
+https://www.encodeproject.org/files/ENCFF213XDA/@@download/ENCFF213XDA.bam
+https://www.encodeproject.org/files/ENCFF281VKZ/@@download/ENCFF281VKZ.bam
+https://www.encodeproject.org/files/ENCFF250BDM/@@download/ENCFF250BDM.bam
+https://www.encodeproject.org/files/ENCFF168AZV/@@download/ENCFF168AZV.bam
+https://www.encodeproject.org/files/ENCFF362CPC/@@download/ENCFF362CPC.bam
+https://www.encodeproject.org/files/ENCFF940WVU/@@download/ENCFF940WVU.bam
