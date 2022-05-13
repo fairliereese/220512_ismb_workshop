@@ -6,3 +6,30 @@ Download ENCODE data
 ```bash
 xargs -L 1 curl -O -J -L < files.txt
 ```
+
+Rename files
+```python
+import os
+import pandas as pd
+
+df = pd.read_csv('metadata.tsv', sep='\t')
+m = {'endodermal cell': 'h1_de', 'H1': 'h1'}
+df['hr'] = df['Biosample term name'].map(m)
+df['biorep'] = df.groupby('hr').cumcount()+1
+df['hr'] = df.hr+'_'+df.biorep.astype(str)
+
+for ind, entry in df.iterrows():
+    old = entry['File accession']+'.bam'
+    old = entry.hr
+    new = entry.hr+'.bam'
+    os.rename(old, new)
+```
+
+Subset based on the reads that we're using
+```bash
+module load samtools
+for bam in *bam
+do
+
+done
+```
