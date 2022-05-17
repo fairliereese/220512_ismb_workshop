@@ -1,3 +1,13 @@
+*log*
+*pass*list*
+*annot*tsv 
+talon*out
+talon*log
+*db
+*gtf
+*read_labels*
+*abundance*tsv
 *bam
 *ipynb_checkpoints*
-
+*sam
+*tmp*
