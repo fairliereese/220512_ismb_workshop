@@ -140,5 +140,16 @@ talon_abundance \
   --db $db \
   -a gencode_v40 \
   -b hg38 \
+  --whitelist h1_pass_list.csv \
   --o h1
+```
+
+all of it
+```bash
+/usr/bin/time -l bash talon.sh 2> talon_all.out
+```
+
+swan
+```bash
+/usr/bin/time -l python swan.py 2> swan_all.out
 ```
