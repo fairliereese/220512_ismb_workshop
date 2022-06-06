@@ -33,23 +33,27 @@ ir_df = sg.find_ir_genes(verbose=False)
 
 ir_df.head()
 
+ir_tid = ir_df.tid.tolist()[0]
+ir_gid = ir_df.gid.tolist()[0]
+
 # inspect a gene with IR and ES
-sg.plot_graph('ENSG00000203879.12', indicate_novel=True)
+sg.plot_graph(ir_gid, indicate_novel=True)
 
 # inspect a gene with IR and ES
 sg.plot_graph('ENSG00000203879.12', indicate_novel=True)
 
-sg.plot_transcript_path('ENCODEHT000013762', indicate_novel=True)
+sg.plot_transcript_path(ir_tid, indicate_novel=True)
 
 es_df.head()
 
-sg.plot_graph('ENSG00000143398.20', indicate_novel=True)
+es_gid = es_df.gid.tolist()[0]
+es_tid = es_df.tid.tolist()[0]
 
-sg.plot_transcript_path('ENCODEHT000005453', indicate_novel=True)
+sg.plot_graph(es_gid, indicate_novel=True)
 
-sg.plot_transcript_path('ENCODEHT000005453', indicate_novel=True)
+sg.plot_transcript_path(es_tid, indicate_novel=True)
 
-sg.plot_transcript_path('ENCODEHT000005453', browser=True)
+sg.plot_transcript_path(es_tid, browser=True)
 
 # differential expression tests
 sg = swan.read('swan.p')

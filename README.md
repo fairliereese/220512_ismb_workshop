@@ -24,9 +24,8 @@ df['hr'] = df.hr+'_'+df.biorep.astype(str)
 samples = []
 for ind, entry in df.iterrows():
     old = entry['File accession']+'.bam'
-    # old = entry.hr
-    samples.append(new)
     new = entry.hr+'.bam'
+    samples.append(new)
     os.rename(old, new)
 
 with open('samples.txt', 'w') as ofile:
