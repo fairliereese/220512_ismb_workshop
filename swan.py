@@ -39,9 +39,6 @@ ir_gid = ir_df.gid.tolist()[0]
 # inspect a gene with IR and ES
 sg.plot_graph(ir_gid, indicate_novel=True)
 
-# inspect a gene with IR and ES
-sg.plot_graph('ENSG00000203879.12', indicate_novel=True)
-
 sg.plot_transcript_path(ir_tid, indicate_novel=True)
 
 es_df.head()
@@ -59,9 +56,9 @@ sg.plot_transcript_path(es_tid, browser=True)
 sg = swan.read('swan.p')
 
 obs_col = 'cell_type'
-degs = sg.de_gene_test(obs_col)
+# degs = sg.de_gene_test(obs_col)
 
-dets = sg.de_transcript_test(obs_col)
+# dets = sg.de_transcript_test(obs_col)
 
 die, results = sg.die_gene_test(obs_col=obs_col, verbose=True)
 
