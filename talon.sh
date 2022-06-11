@@ -26,7 +26,7 @@ talon_initialize_database \
 
 cfg=talon_config.csv
 touch ${cfg}
-print "" > ${cfg}
+printf "" > ${cfg}
 while read s
 do
   sam=${s}_labeled.sam
