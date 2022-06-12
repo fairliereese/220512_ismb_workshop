@@ -12,11 +12,17 @@ sg.add_abundance(ab)
 sg.save_graph('swan')
 
 # add metadata
-sg.adata.obs.head()
+m = {'PacBio_cDNA_H1_DE_1_alignments_ENCFF362CPC_subset': 'h1_de_1',
+     'PacBio_cDNA_H1_DE_2_alignments_ENCFF168AZV_subset': 'h1_de_2',
+     'PacBio_cDNA_H1_DE_3_alignments_ENCFF940WVU_subset': 'h1_de_3',
+     'PacBio_cDNA_H1_ESC_1_alignments_ENCFF213XDA_subset': 'h1_1',
+     'PacBio_cDNA_H1_ESC_2_alignments_ENCFF281VKZ_subset': 'h1_2',
+     'PacBio_cDNA_H1_ESC_3_alignments_ENCFF250BDM_subset': 'h1_3'}
+sg.adata.obs['sample'] = sg.adata.obs.dataset.map(m)sg.adata.obs.head()
 meta = sg.adata.obs.copy(deep=True)
-meta['cell_type'] = meta.dataset.str.rsplit('_', n=1, expand=True)[0]
+meta['cell_type'] = meta['sample'].str.rsplit('_', n=1, expand=True)[0]
 
-meta = meta[['dataset', 'cell_type']]
+meta = meta[['dataset', 'sample', 'cell_type']]
 meta.to_csv('swan_metadata.tsv', sep='\t', index=False)
 meta = 'swan_metadata.tsv'
 sg.add_metadata(meta)
@@ -89,10 +95,7 @@ make_reports('DES')
 make_reports('POGZ')
 make_reports('PI4KB')
 
-sg.plot_transcript_path('ENCODEHT000006801', indicate_novel=True)
-
-sg = swan.read('swan.p')
-
-sg.t_df.loc[sg.t_df.tid == 'ENCODEHT000006801']
+tid = sg.t_df.loc[(sg.t_df.gname == 'PI4KB')&(sg.t_df.novelty!='Known')].tid.tolist()[0]
+sg.plot_transcript_path(tid, indicate_novel=True)
 
 sg.plot_each_transcript_in_gene('PI4KB', 'figures/pi4kb', indicate_novel=True)

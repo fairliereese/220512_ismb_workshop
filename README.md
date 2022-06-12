@@ -65,7 +65,7 @@ do
     /usr/bin/time -l talon_label_reads \
         --f $sam \
         --g $ref \
-        --t 1\
+        --t 1 \
         --ar 20  \
         --deleteTmp  \
         --o $s

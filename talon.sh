@@ -1,19 +1,31 @@
+# symlink all bams to current directory
+ln -s ../data/PacBio/03_alignments/*bam .
 
-ref=~/mortazavi_lab/ref/hg38/hg38.fa
+# create samples file
+touch samples.txt
+printf "" > samples.txt
+for f in *bam
+do
+  b=`basename $f .bam`
+  printf "${b}\n" >> samples.txt
+done
+
+# ref=~/mortazavi_lab/ref/hg38/hg38.fa
+ref=../data/reference/GRCh38_no_alt_analysis_set_GCA_000001405.15.fasta
 while read s
 do
     echo $s
-    sam=${s}_subset.bam
+    sam=${s}.bam
     talon_label_reads \
         --f $sam \
         --g $ref \
-        --t 1\
+        --t 1 \
         --ar 20  \
         --deleteTmp  \
         --o $s
 done < samples.txt
 
-annot=gencode.v40.annotation.encode_pilot_regions.gtf
+annot=../data/reference/gencode.v40.annotation.encode_pilot_regions.gtf
 talon_initialize_database \
   --f $annot \
   --g hg38 \
