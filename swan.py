@@ -1,6 +1,7 @@
 import swan_vis as swan
+import matplotlib.pyplot as plt
 
-annot = 'gencode.v40.annotation.encode_pilot_regions.gtf'
+annot = '/home/ubuntu/ECCB2022/data/reference/gencode.v40.annotation.encode_pilot_regions.gtf'
 gtf = 'h1_talon.gtf'
 ab = 'h1_talon_abundance.tsv'
 
@@ -18,7 +19,8 @@ m = {'PacBio_cDNA_H1_DE_1_alignments_ENCFF362CPC_subset': 'h1_de_1',
      'PacBio_cDNA_H1_ESC_1_alignments_ENCFF213XDA_subset': 'h1_1',
      'PacBio_cDNA_H1_ESC_2_alignments_ENCFF281VKZ_subset': 'h1_2',
      'PacBio_cDNA_H1_ESC_3_alignments_ENCFF250BDM_subset': 'h1_3'}
-sg.adata.obs['sample'] = sg.adata.obs.dataset.map(m)sg.adata.obs.head()
+sg.adata.obs['sample'] = sg.adata.obs.dataset.map(m)
+# sg.adata.obs.head()
 meta = sg.adata.obs.copy(deep=True)
 meta['cell_type'] = meta['sample'].str.rsplit('_', n=1, expand=True)[0]
 
@@ -91,6 +93,7 @@ def make_reports(gname):
                 layer='pi',
                 browser=True)
 
+plt.clf()
 make_reports('DES')
 make_reports('POGZ')
 make_reports('PI4KB')
