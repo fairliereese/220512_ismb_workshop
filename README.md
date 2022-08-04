@@ -20,6 +20,7 @@ m = {'endodermal cell': 'h1_de', 'H1': 'h1'}
 df['hr'] = df['Biosample term name'].map(m)
 df['biorep'] = df.groupby('hr').cumcount()+1
 df['hr'] = df.hr+'_'+df.biorep.astype(str)
+print(df)
 
 samples = []
 for ind, entry in df.iterrows():
